@@ -11618,7 +11618,8 @@
   "packageFolders": {
     "C:\\Users\\v-nickzh\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {},
+	"..\package\2.1.0-preview1-final": {}
   },
   "project": {
     "version": "1.0.0",
@@ -11644,7 +11645,8 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {},
-        "https://www.myget.org/F/applicationinsights/api/v3/index.json": {}
+        "https://www.myget.org/F/applicationinsights/api/v3/index.json": {},
+		"..\package\2.1.0-preview1-final": {}
       },
       "frameworks": {
         "netcoreapp2.1": {
