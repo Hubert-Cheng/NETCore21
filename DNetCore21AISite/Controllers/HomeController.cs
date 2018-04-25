@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DNetCore21AISite.Models;
 using Microsoft.AspNetCore.Mvc;
-using DNetCore21AISite.Models;
+using System;
+using System.Diagnostics;
+using System.Net;
+using System.Reflection;
 
 namespace DNetCore21AISite.Controllers
 {
@@ -12,12 +11,29 @@ namespace DNetCore21AISite.Controllers
     {
         public IActionResult Index()
         {
+            var req = WebRequest.Create("http://bing.com");
+            var response = req.GetResponse();
+            using (var s = response.GetResponseStream())
+            {
+                byte[] content = new byte[512];
+                s.Read(content, 0, content.Length);
+                var contentS = System.Text.Encoding.UTF8.GetString(content);
+                Console.WriteLine(contentS);
+                ViewBag.Content = contentS;
+            }
+
             return View();
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewBag.Message = "Your application description page." + Assembly.GetExecutingAssembly().FullName;
+
+            ViewBag.Assemblies = AppDomain.CurrentDomain.GetAssemblies();
+
+            ViewBag.Modules = Process.GetCurrentProcess().Modules;
+
+            ViewBag.EnvironmentVariables = Environment.GetEnvironmentVariables();
 
             return View();
         }
